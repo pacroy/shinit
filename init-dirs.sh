@@ -6,8 +6,8 @@ if [ ! -d ~/dev ]; then
         mkdir ~/dev
     else
         DEVDIR="/mnt/c/Users/$(whoami)/dev"
-        read -p "dev path [ENTER for $DEVDIR]:" DEVDIR_INPUT
-        DEVDIR=${DEVDIR_INPUT:-$DEVDIR}
+        read -p "dev path [ENTER for $DEVDIR]:" devdir_input </dev/tty
+        devdir_input=${DEVDIR_INPUT:-$DEVDIR}
         ln -s $dev_path ~/dev
     fi
 fi
