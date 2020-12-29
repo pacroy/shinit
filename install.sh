@@ -1,4 +1,4 @@
-!#/bin/sh
+#!/bin/sh
 INITDIR="$HOME/.init"
 
 git --version
