@@ -54,7 +54,7 @@ gitc() {
 }
 
 # Update
-alias update-sh-init="$HOME/.init/install.sh"
+alias update-sh-init="cat $INITDIR/install.sh | sh && source $INITDIR/init.sh"
 
 # Standard
 alias ll='ls -AlFh'
