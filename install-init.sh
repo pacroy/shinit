@@ -7,6 +7,7 @@ ALIASES="$INITDIR/aliases.sh"
 BINDIR="$HOME/bin"
 
 echo '#!/bin/sh' > "$INITSH"
+echo 'INITDIR="$HOME/.init"' > "$INITSH"
 
 # Add aliases
 if [ -f "$ALIASES" ]; then
@@ -27,6 +28,3 @@ if [ -f "$HOME/.zshrc" ]; then
         echo "\nsource $INITSH" >> $HOME/.zshrc
     fi
 fi
-
-# Source init script
-source "$INITSH"
