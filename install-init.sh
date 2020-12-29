@@ -22,10 +22,14 @@ fi
 # Configure less behavior
 echo 'unset LESS' >> "$INITSH"
 
-# Configure .bashrc
+# Configure .bashrc or .bash_profile
 if [ -f "$HOME/.bashrc" ]; then
     if ! cat $HOME/.bashrc | grep "source $INITSH" > /dev/null; then
         echo "\nsource $INITSH" >> $HOME/.bashrc
+    fi
+elif [ -f "$HOME/.bash_profile" ]; then
+    if ! cat $HOME/.bash_profile | grep "source $INITSH" > /dev/null; then
+        echo "\nsource $INITSH" >> $HOME/.bash_profile
     fi
 fi
 
