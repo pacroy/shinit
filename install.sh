@@ -7,6 +7,7 @@ git --version
 if [ -d "$INITDIR" ]; then
     CURRENTDIR=$(pwd)
     cd "$INITDIR"
+    git reset --hard main
     git pull
     cd $CURRENTDIR
     unset CURRENTDIR
