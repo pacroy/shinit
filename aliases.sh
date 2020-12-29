@@ -52,14 +52,6 @@ gita() {
 gitc() { 
     git commit -m "$1" 
 }
-gitac() { 
-    git commit -am "$1" 
-}
-gitz() { 
-    gita .
-    gitc "$1"
-    gitp 
-}
 
 # Alias
 alias update-alias='curl -sSL https://par.sh/alias -o ~/alias.sh -x "$proxy" && source ~/alias.sh'
