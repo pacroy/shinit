@@ -22,6 +22,13 @@ fi
 # Configure less behavior
 echo 'unset LESS' >> "$INITSH"
 
+# Configure .bashrc
+if [ -f "$HOME/.bashrc" ]; then
+    if ! cat $HOME/.bashrc | grep "source $INITSH" > /dev/null; then
+        echo "\nsource $INITSH" >> $HOME/.zshrc
+    fi
+fi
+
 # Configure .zshrc
 if [ -f "$HOME/.zshrc" ]; then
     if ! cat $HOME/.zshrc | grep "source $INITSH" > /dev/null; then
