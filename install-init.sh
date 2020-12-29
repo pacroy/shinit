@@ -27,3 +27,6 @@ if [ -f "$HOME/.zshrc" ]; then
         echo "\nsource $INITSH" >> $HOME/.zshrc
     fi
 fi
+
+# Source init script
+source $INITSH
