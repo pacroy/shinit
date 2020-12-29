@@ -54,14 +54,7 @@ gitc() {
 }
 
 # Update
-update-sh-init() {
-    CURRENTDIR=$(pwd)
-    cd "$HOME/.init"
-    git reset --hard main
-    git pull
-    cd $CURRENTDIR
-    unset CURRENTDIR
-}
+alias update-sh-init="$HOME/.init/install.sh"
 
 # Standard
 alias ll='ls -AlFh'
