@@ -57,6 +57,7 @@ gitc() {
 update-sh-init() {
     CURRENTDIR=$(pwd)
     cd "$HOME/.init"
+    git reset --hard main
     git pull
     cd $CURRENTDIR
     unset CURRENTDIR
