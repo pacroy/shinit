@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 INITDIR="$HOME/.init"
 INITSH="$INITDIR/init.sh"
