@@ -9,7 +9,7 @@ if [ -d "$INITDIR" ]; then
     git pull --quiet
     cd $OLDPWD
 else
-    git clone --depth 1 https://github.com/pacroy/sh-init.git "$INITDIR"
+    git clone --quiet --depth 1 https://github.com/pacroy/sh-init.git "$INITDIR"
 fi
 chmod +x $INITDIR/*.sh
 $INITDIR/install2.sh $INITDIR
