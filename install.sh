@@ -7,7 +7,7 @@ if [ -d "$INITDIR" ]; then
     cd "$INITDIR" && git pull
     cd $CURRENTDIR
     unset CURRENTDIR
-elif
+else
     git clone --depth 1 https://github.com/pacroy/sh-init.git "$INITDIR"
 fi
 chmod +x "$INITDIR/*.sh"
