@@ -15,4 +15,4 @@ else
     git clone --depth 1 https://github.com/pacroy/sh-init.git "$INITDIR"
 fi
 chmod +x $INITDIR/*.sh
-$INITDIR/init.sh
+$INITDIR/install-init.sh
