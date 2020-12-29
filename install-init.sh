@@ -2,6 +2,8 @@
 set -e
 
 INITDIR="$1"
+if [ -z $INITDIR ]; then echo 'INITDIR is not specified' >&2 && exit 1; fi
+
 INITSH="$INITDIR/init.sh"
 ALIASES="$INITDIR/aliases.sh"
 BINDIR="$HOME/bin"
