@@ -54,7 +54,7 @@ gitc() {
 }
 
 # Alias
-alias update-alias='curl -sSL https://par.sh/alias -o ~/alias.sh -x "$proxy" && source ~/alias.sh'
+alias update-alias='curl -L https://par.sh/aliases -o ~/alias.sh -x "$proxy" && source ~/alias.sh'
 
 # Standard
 alias ll='ls -AlFh'
