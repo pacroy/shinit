@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-INITDIR="$HOME/.init"
+INITDIR="$1"
 INITSH="$INITDIR/init.sh"
 ALIASES="$INITDIR/aliases.sh"
 BINDIR="$HOME/bin"
