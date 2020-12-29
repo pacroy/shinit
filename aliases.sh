@@ -53,8 +53,14 @@ gitc() {
     git commit -m "$1" 
 }
 
-# Alias
-alias update-alias='curl -L https://par.sh/aliases -o ~/aliases.sh -x "$proxy" && source ~/aliases.sh'
+# Update
+update-sh-init() {
+    CURRENTDIR=$(pwd)
+    cd "$HOME/.init"
+    git pull
+    cd $CURRENTDIR
+    unset CURRENTDIR
+}
 
 # Standard
 alias ll='ls -AlFh'
