@@ -25,7 +25,7 @@ echo 'unset LESS' >> "$INITSH"
 # Configure .bashrc
 if [ -f "$HOME/.bashrc" ]; then
     if ! cat $HOME/.bashrc | grep "source $INITSH" > /dev/null; then
-        echo "\nsource $INITSH" >> $HOME/.zshrc
+        echo "\nsource $INITSH" >> $HOME/.bashrc
     fi
 fi
 
