@@ -1,6 +1,6 @@
+#!/bin/sh
+
 # Azure CLI
-unalias azset azls 2> /dev/null
-unset azaks
 alias azset='az account set -s'
 alias azls='az account list -o table'
 azaks() { 
@@ -8,8 +8,6 @@ azaks() {
 }
 
 # Kubernetes CLI
-unalias kc kcls kcuse 2> /dev/null
-unset kcsetns kcstatus
 alias kc='kubectl'
 alias kcls='kc config get-contexts'
 alias kcuse='kc config use-context'
@@ -21,7 +19,6 @@ kcstatus() {
 }
 
 # OpenShift CLI
-unalias ocls ocuse 2> /dev/null
 alias ocls='oc config get-contexts'
 alias ocuse='oc config use-context'
 
@@ -31,11 +28,9 @@ alias tf='terraform'
 alias tg='terragrunt'
 
 # Git
-unalias gitl gitt gits gitb gitp gitpt gitd gitu 2> /dev/null
-unset gitscan gita gitc gitz
-alias gitl='git log --oneline --decorate --all'
+alias gitl='git log --oneline --decorate'
 alias gitt='git tag -n1'
-alias gits='git status --ignored'
+alias gits='git status'
 alias gitb='git branch -vv'
 alias gitp='git push --follow-tags'
 alias gitpt='git push --tags --force'
@@ -67,7 +62,6 @@ gitz() {
 }
 
 # Alias
-unalias update-alias 2> /dev/null
 alias update-alias='curl -sSL https://par.sh/alias -o ~/alias.sh -x "$proxy" && source ~/alias.sh'
 
 # Standard
