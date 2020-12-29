@@ -29,4 +29,4 @@ if [ -f "$HOME/.zshrc" ]; then
 fi
 
 # Source init script
-source $INITSH
+source "$INITSH"
