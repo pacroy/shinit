@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 INITDIR="$HOME/.init"
 
 git --version
@@ -10,5 +12,5 @@ if [ -d "$INITDIR" ]; then
 else
     git clone --depth 1 https://github.com/pacroy/sh-init.git "$INITDIR"
 fi
-chmod +x "$INITDIR/*.sh"
+chmod +x "$INITDIR/init.sh"
 $INITDIR/init.sh
