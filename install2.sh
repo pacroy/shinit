@@ -9,3 +9,5 @@ $INITDIR/init-ssh.sh $@
 $INITDIR/init-git.sh $@
 
 $INITDIR/init-rc.sh $@
+
+echo "Initialization completed"
