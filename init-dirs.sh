@@ -2,6 +2,7 @@
 
 if [ ! -d ~/dev ]; then 
     if [ -z $WSLENV ]; then
+        echo "Creating directory ~/dev ..."
         mkdir ~/dev
     else
         DEVDIR="/mnt/c/Users/$(whoami)/dev"
@@ -10,4 +11,8 @@ if [ ! -d ~/dev ]; then
         ln -s $dev_path ~/dev
     fi
 fi
-if [ ! -d ~/bin ]; then mkdir ~/bin; fi
+
+if [ ! -d ~/bin ]; then 
+    echo "Creating directory ~/bin ..."
+    mkdir ~/bin; 
+fi
