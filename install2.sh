@@ -10,4 +10,4 @@ $INITDIR/init-git.sh $@
 
 $INITDIR/init-rc.sh $@
 
-echo "Initialization completed"
+echo "Installation completed"
