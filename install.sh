@@ -3,10 +3,9 @@ set -e
 
 INITDIR="$HOME/.init"
 
-git --version
 if [ -d "$INITDIR" ]; then
     cd "$INITDIR"
-    git reset --hard main
+    git reset --quiet --hard main
     git pull --quiet
     cd $OLDPWD
 else
