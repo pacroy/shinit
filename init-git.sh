@@ -20,3 +20,13 @@ if [ -z "$(git config --global pull.rebase)" ]; then
     echo "Setting git pull.rebase=false ..."
     git config --global pull.rebase false
 fi
+
+if [ -z "$(git config --global oh-my-zsh.hide-dirty)" ]; then
+    echo "Setting git oh-my-zsh.hide-dirty=1 ..."
+    git config --global oh-my-zsh.hide-dirty 1
+fi
+
+if [ -z "$(git config --global oh-my-zsh.hide-status)" ]; then
+    echo "Setting git oh-my-zsh.hide-status=1 ..."
+    git config --global oh-my-zsh.hide-status 1
+fi
