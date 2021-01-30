@@ -30,3 +30,8 @@ if [ -z "$(git config --global oh-my-zsh.hide-status)" ]; then
     echo "Setting git oh-my-zsh.hide-status=1 ..."
     git config --global oh-my-zsh.hide-status 1
 fi
+
+if [ -z "$(git config --global init.defaultBranch)" ]; then
+    echo "Setting git init.defaultBranch=main ..."
+    git config --global init.defaultBranch main
+fi
