@@ -58,4 +58,4 @@ alias update-sh-init="cat $INITDIR/install.sh | sh && source $INITDIR/init.sh"
 
 # Standard
 alias ll='ls -AlFh'
-alias switch='update-alternatives --config'
+alias switch='sudo update-alternatives --config'
