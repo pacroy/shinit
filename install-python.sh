@@ -2,6 +2,7 @@
 # Source: https://phoenixnap.com/kb/how-to-install-python-3-ubuntu
 #         https://hackersandslackers.com/multiple-versions-python-ubuntu
 #         https://phoenixnap.com/kb/how-to-install-pip-on-ubuntu
+#         https://pip.pypa.io/en/stable/installing/
 set -e
 
 sudo apt update
