@@ -7,7 +7,7 @@ set -e
 
 sudo apt update
 sudo apt install -y python3 python3-pip
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 1
+sudo update-alternatives --install /usr/bin/python python $(readlink -f $(command -v python3)) 1
 sudo update-alternatives --display python
 python --version
 python -m pip install -U pip
