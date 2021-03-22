@@ -32,10 +32,11 @@ alias gitl='git log --oneline --decorate'
 alias gitt='git tag -n1'
 alias gits='git status'
 alias gitb='git branch -vv'
-alias gitp='git push --follow-tags'
-alias gitpt='git push --tags --force'
+alias gitp='git push'
+alias gitpt='git push --tags'
 alias gitd='git diff'
 alias gitu='git pull'
+alias gitr='git remote -v'
 gitscan() {
     for d in */
     do
