@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # References:
 # - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 

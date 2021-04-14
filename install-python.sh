@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # References
 # - https://github.com/pyenv/pyenv
 # - https://github.com/pyenv/pyenv-installer
