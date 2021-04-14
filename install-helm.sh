@@ -1,10 +1,10 @@
 #!/bin/sh
-# Source: https://helm.sh/docs/intro/install/   
-set -e
+# References:
+# - https://helm.sh/docs/intro/install/   
 
-curl -fL https://get.helm.sh/helm-v3.5.1-linux-amd64.tar.gz -o $HOME/bin/helm.tgz
-tar -xzf $HOME/bin/helm.tgz -C $HOME/bin
-mv $HOME/bin/linux-amd64/helm $HOME/bin
-rm -rf $HOME/bin/linux-amd64
-rm $HOME/bin/helm.tgz
+set -o errexit
+set -o pipefail
+
+# Download and install
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 helm version
