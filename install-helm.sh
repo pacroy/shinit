@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # References:
 # - https://helm.sh/docs/intro/install/   
 

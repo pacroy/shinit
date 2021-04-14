@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # References:
 # - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
 
