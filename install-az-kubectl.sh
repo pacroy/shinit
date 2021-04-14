@@ -1,8 +1,9 @@
 #!/bin/sh
-# Source: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
-set -e
+# References:
+# - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
+
+set -o errexit
+set -o pipefail
 
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az version
-sudo az aks install-cli
-kubectl version --client
