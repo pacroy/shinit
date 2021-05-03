@@ -56,7 +56,7 @@ gitc() {
 
 # Update
 # shellcheck disable=SC2139
-alias update-sh-init="bash < ${INITDIR}/install.sh && source ${INITDIR}/init.sh"
+alias update-sh-init="bash ${INITDIR}/install.sh && source ${INITDIR}/init.sh"
 
 # Standard
 alias ll='ls -AlFh'
