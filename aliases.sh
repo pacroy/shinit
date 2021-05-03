@@ -17,6 +17,9 @@ kcsetns() {
 kcstatus() { 
     kc rollout status deploy $1
 }
+kcskiptls() {
+    kc config set-cluster "${1}" --insecure-skip-tls-verify=true
+}
 
 # OpenShift CLI
 alias ocls='oc config get-contexts'
