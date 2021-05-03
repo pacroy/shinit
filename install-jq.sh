@@ -9,7 +9,7 @@ JQ_VERSION="1.6"
 curl -fL "https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}/jq-linux64" -o "${HOME}/jq"
 
 # Install
-sudo install -o root -g root -m 0755 "${HOME}/jq" /usr/local/bin/oc
+sudo install -o root -g root -m 0755 "${HOME}/jq" /usr/local/bin/jq
 jq --version
 
 # Clean up
