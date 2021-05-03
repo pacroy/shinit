@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Azure CLI
 alias azset='az account set -s'
@@ -12,7 +12,7 @@ alias kc='kubectl'
 alias kcls='kubectl config get-contexts'
 alias kcuse='kubectl config use-context'
 kcsetns() { 
-    kubectl config set-context $(kubectl config current-context) --namespace "${1}"
+    kubectl config set-context "$(kubectl config current-context)" --namespace "${1}"
 }
 kcstatus() { 
     kubectl rollout status deploy "${1}"
@@ -43,11 +43,8 @@ alias gitr='git remote -v'
 gitscan() {
     for d in */
     do
-        echo -e "[$d]"
-        cd $d
-        git status
-        cd ..
-        echo ""
+        print "\n[${d}]"
+        ( cd "${d}" || continue; git status )
     done
 }
 gita() {
