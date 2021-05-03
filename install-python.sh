@@ -12,14 +12,18 @@ set -o pipefail
 curl https://pyenv.run | bash
 
 # Configure .bashrc
-printf '\nexport PATH="/home/pacroy/.pyenv/bin:$PATH"\n' >> $HOME/.bashrc
-printf 'eval "$(pyenv init -)"\n' >> $HOME/.bashrc
-printf 'eval "eval$(pyenv virtualenv-init -)"\n' >> $HOME/.bashrc
+{
+    printf '\nexport PATH="/home/pacroy/.pyenv/bin:$PATH"\n'
+    printf 'eval "$(pyenv init -)"\n'
+    printf 'eval "eval$(pyenv virtualenv-init -)"\n'
+} >> "${HOME}/.bashrc"
 
 # Configure .zshrc
-printf '\nexport PATH="/home/pacroy/.pyenv/bin:$PATH"\n' >> $HOME/.zshrc
-printf 'eval "$(pyenv init -)"\n' >> $HOME/.zshrc
-printf 'eval "eval$(pyenv virtualenv-init -)"\n' >> $HOME/.zshrc
+{
+    printf '\nexport PATH="/home/pacroy/.pyenv/bin:$PATH"\n'
+    printf 'eval "$(pyenv init -)"\n'
+    printf 'eval "eval$(pyenv virtualenv-init -)"\n' 
+} >> "${HOME}/.zshrc"
 
 # Install build dependencies
 sudo apt-get update; sudo apt-get install --yes --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
