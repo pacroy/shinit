@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-set -o errexit
-set -o pipefail
 
 # shellcheck disable=SC2034
 INITDIR="${HOME}/.init"
