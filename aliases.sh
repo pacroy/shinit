@@ -9,16 +9,16 @@ azaks() {
 
 # Kubernetes CLI
 alias kc='kubectl'
-alias kcls='kc config get-contexts'
-alias kcuse='kc config use-context'
+alias kcls='kubectl config get-contexts'
+alias kcuse='kubectl config use-context'
 kcsetns() { 
-    kc config set-context $(kc config current-context) --namespace $1
+    kubectl config set-context $(kubectl config current-context) --namespace $1
 }
 kcstatus() { 
-    kc rollout status deploy $1
+    kubectl rollout status deploy $1
 }
 kcskiptls() {
-    kc config set-cluster "${1}" --insecure-skip-tls-verify=true
+    kubectl config set-cluster "${1}" --insecure-skip-tls-verify=true
 }
 
 # OpenShift CLI
