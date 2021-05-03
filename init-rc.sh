@@ -10,17 +10,17 @@ INITSH="$INITDIR/init.sh"
 # Configure .bashrc or .bash_profile
 if [ -f "${HOME}/.bashrc" ]; then
     if ! grep -F "source ${INITSH}" "${HOME}/.bashrc" > /dev/null; then
-        printf "\nsource ${INITSH}" >> "${HOME}/.bashrc"
+        printf "\nsource %s" "${INITSH}" >> "${HOME}/.bashrc"
     fi
 elif [ -f "${HOME}/.bash_profile" ]; then
     if ! grep -F "source ${INITSH}" "${HOME}/.bash_profile" > /dev/null; then
-        printf "\nsource ${INITSH}" >> "${HOME}/.bash_profile"
+        printf "\nsource %s" "${INITSH}" >> "${HOME}/.bash_profile"
     fi
 fi
 
 # Configure .zshrc
 if [ -f "${HOME}/.zshrc" ]; then
     if ! grep -F "source ${INITSH}" "${HOME}/.zshrc" > /dev/null; then
-        printf "\nsource ${INITSH}" >> "${HOME}/.zshrc"
+        printf "\nsource %s" "${INITSH}" >> "${HOME}/.zshrc"
     fi
 fi
