@@ -1,14 +1,15 @@
-#!/bin/sh
-set -e
+#!/usr/bin/env bash
+set -o errexit
+set -o pipefail
 
 if [ -z "$(git config --global user.name)" ]; then 
-    read -p "Your git name : " git_name </dev/tty
+    read -rp "Your git name : " git_name </dev/tty
     git config --global user.name "$git_name"
 fi
 
 if [ -z "$(git config --global user.email)" ]; then
-    read -p "Your git email: " git_email </dev/tty
-    git config --global user.email $git_email
+    read -rp "Your git email: " git_email </dev/tty
+    git config --global user.email "${git_email}"
 fi
 
 if [ -z "$(git config --global push.default)" ]; then
