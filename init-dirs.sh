@@ -1,15 +1,17 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -o errexit
+set -o pipefail
 
 if [ ! -d ~/dev ]; then 
-    if [ -z $WSLENV ]; then
+    if [ -z "${WSLENV}" ]; then
         echo "Creating directory ~/dev ..."
         mkdir ~/dev
     else
-        DEVDIR="/mnt/c/Users/$(whoami)/dev"
-        read -p "dev path [ENTER for $DEVDIR]:" devdir_input </dev/tty
-        dev_path=${DEVDIR_INPUT:-$DEVDIR}
-        if [ ! -d $dev_path ]; then mkdir $dev_path; fi
-        ln -s $dev_path ~/dev
+        devdir_default="/mnt/c/Users/$(whoami)/dev"
+        read -rp "dev path [ENTER for ${devdir_default}]:" devdir_input </dev/tty
+        dev_path=${devdir_input:-${devdir_default}}
+        mkdir -p $dev_path
+        ln -s "${dev_path}" ~/dev
     fi
 fi
 
