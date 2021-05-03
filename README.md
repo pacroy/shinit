@@ -6,11 +6,11 @@ Linux Shell Initialization Scripts
 Usual installation
 
 ```sh
-curl -sL https://par.sh/sh-init | sh && source $HOME/.init/init.sh
+curl -fsL https://par.sh/sh-init | bash && source $HOME/.init/init.sh
 ```
 
 Installation behind proxy
 
 ```sh
-curl -sL https://par.sh/sh-init -x "$proxy" | sh && source $HOME/.init/init.sh
+curl -fsL https://par.sh/sh-init -x "$proxy" | bash && source $HOME/.init/init.sh
 ```
