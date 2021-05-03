@@ -21,16 +21,6 @@ if [ -z "$(git config --global pull.rebase)" ]; then
     git config --global pull.rebase false
 fi
 
-if [ -z "$(git config --global oh-my-zsh.hide-dirty)" ]; then
-    echo "Setting git oh-my-zsh.hide-dirty=1 ..."
-    git config --global oh-my-zsh.hide-dirty 1
-fi
-
-if [ -z "$(git config --global oh-my-zsh.hide-status)" ]; then
-    echo "Setting git oh-my-zsh.hide-status=1 ..."
-    git config --global oh-my-zsh.hide-status 1
-fi
-
 if [ -z "$(git config --global init.defaultBranch)" ]; then
     echo "Setting git init.defaultBranch=main ..."
     git config --global init.defaultBranch main
