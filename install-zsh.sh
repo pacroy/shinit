@@ -17,4 +17,4 @@ fi
 if ! grep -qF "source ~/.init/init.sh" ~/.zshrc; then
     echo "source ~/.init/init.sh" >> ~/.zshrc
 fi
-source ~/.zshrc
+source "${HOME}/.zshrc"
