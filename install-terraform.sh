@@ -14,7 +14,7 @@ fi
 
 # Download
 curl -fL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" -o "${HOME}/terraform.zip"
-unzip -j "${HOME}/kubelogin.zip" terraform -d "${HOME}"
+unzip -j "${HOME}/terraform.zip" terraform -d "${HOME}"
 
 # Install
 sudo install -o root -g root -m 0755 "${HOME}/terraform" /usr/local/bin/terraform
