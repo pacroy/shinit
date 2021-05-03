@@ -8,7 +8,7 @@ OC_URL="https://mirror.openshift.com/pub/openshift-v3/clients/${OC_VERSION}/linu
 
 # Download
 curl -fL "${OC_URL}" -o "${HOME}/oc.tgz"
-tar -C "${HOME}" -xzf oc.tgz oc
+tar -C "${HOME}" -xzf "${HOME}/oc.tgz" oc
 
 # Install
 sudo install -o root -g root -m 0755 $HOME/oc /usr/local/bin/oc
