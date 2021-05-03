@@ -11,7 +11,7 @@ curl -fL "${OC_URL}" -o "${HOME}/oc.tgz"
 tar -C "${HOME}" -xzf "${HOME}/oc.tgz" oc
 
 # Install
-sudo install -o root -g root -m 0755 $HOME/oc /usr/local/bin/oc
+sudo install -o root -g root -m 0755 "${HOME}/oc" /usr/local/bin/oc
 oc version
 
 # Clean up
