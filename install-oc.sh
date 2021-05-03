@@ -1,15 +1,19 @@
 #!/bin/sh
 # Source: https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html#cli-linux
-set -e
+set -o errexit
+set -o pipefail
 
-az acocunt show --subscription 172f7750-929c-4214-99fb-e1e8d9e582f2
-az storage blob download \
-    --subscription 172f7750-929c-4214-99fb-e1e8d9e582f2 \
-    --account-name asok \
-    --container-name samyan \
-    --auth-mode login \
-    --name oc-3.11.374-linux.tar.gz \
-    --file $HOME/bin/oc.tgz
-tar -xzf $HOME/bin/oc.tgz -C $HOME/bin
-rm $HOME/bin/oc.tgz
+OC_VERSION="3.11.420-1"
+OC_URL="https://mirror.openshift.com/pub/openshift-v3/clients/${OC_VERSION}/linux/oc.tar.gz"
+
+# Download
+curl -fL "${OC_URL}" -o "${HOME}/oc.tgz"
+tar -C "${HOME}" -xzf oc.tgz oc
+
+# Install
+sudo install -o root -g root -m 0755 $HOME/oc /usr/local/bin/oc
 oc version
+
+# Clean up
+rm "${HOME}/oc"
+rm "${HOME}/oc.tgz"
