@@ -10,7 +10,7 @@ if [ ! -d ~/dev ]; then
         devdir_default="/mnt/c/Users/$(whoami)/dev"
         read -rp "dev path [ENTER for ${devdir_default}]:" devdir_input </dev/tty
         dev_path=${devdir_input:-${devdir_default}}
-        mkdir -p $dev_path
+        mkdir -p "${dev_path}"
         ln -s "${dev_path}" ~/dev
     fi
 fi

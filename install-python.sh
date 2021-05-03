@@ -13,15 +13,21 @@ curl https://pyenv.run | bash
 
 # Configure .bashrc
 {
+    # shellcheck disable=SC2016
     printf '\nexport PATH="/home/pacroy/.pyenv/bin:$PATH"\n'
+    # shellcheck disable=SC2016
     printf 'eval "$(pyenv init -)"\n'
+    # shellcheck disable=SC2016
     printf 'eval "eval$(pyenv virtualenv-init -)"\n'
 } >> "${HOME}/.bashrc"
 
 # Configure .zshrc
 {
+    # shellcheck disable=SC2016
     printf '\nexport PATH="/home/pacroy/.pyenv/bin:$PATH"\n'
+    # shellcheck disable=SC2016
     printf 'eval "$(pyenv init -)"\n'
+    # shellcheck disable=SC2016
     printf 'eval "eval$(pyenv virtualenv-init -)"\n' 
 } >> "${HOME}/.zshrc"
 
