@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Source: https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html#cli-linux
 set -o errexit
 set -o pipefail
