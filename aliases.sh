@@ -4,7 +4,7 @@
 alias azset='az account set -s'
 alias azls='az account list -o table'
 azaks() { 
-    az aks get-credentials --resource-group $1 --name $2
+    az aks get-credentials --resource-group "${1}" --name "${2}"
 }
 
 # Kubernetes CLI
@@ -12,10 +12,10 @@ alias kc='kubectl'
 alias kcls='kubectl config get-contexts'
 alias kcuse='kubectl config use-context'
 kcsetns() { 
-    kubectl config set-context $(kubectl config current-context) --namespace $1
+    kubectl config set-context $(kubectl config current-context) --namespace "${1}"
 }
 kcstatus() { 
-    kubectl rollout status deploy $1
+    kubectl rollout status deploy "${1}"
 }
 kcskiptls() {
     kubectl config set-cluster "${1}" --insecure-skip-tls-verify=true
@@ -54,7 +54,7 @@ gita() {
     git add "$@"
 }
 gitc() { 
-    git commit -m "$1" 
+    git commit -m "${1}" 
 }
 
 # Update
