@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-set -o errexit
-set -o pipefail
 
 # Azure CLI
 alias azset='az account set -s'
