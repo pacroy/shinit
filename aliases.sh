@@ -44,7 +44,7 @@ gitscan() {
     for d in */
     do
         print "\n[${d}]"
-        ( cd "${d}" || continue; git status )
+        ( cd "${d}" || return; git status )
     done
 }
 gita() {
