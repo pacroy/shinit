@@ -43,18 +43,14 @@ alias gitpt='git push --tags'
 alias gitd='git diff'
 alias gitu='git pull'
 alias gitr='git remote -v'
+alias gita='git add'
+alias gitc='git commit' 
 gitscan() {
     for d in */
     do
         print "\n[${d}]"
         ( cd "${d}" || return; git status )
     done
-}
-gita() {
-    git add "$@"
-}
-gitc() { 
-    git commit -m "${1}" 
 }
 
 # Update
