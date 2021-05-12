@@ -31,7 +31,8 @@ alias tf='terraform'
 alias tg='terragrunt'
 
 # Git
-alias gitl='git log --oneline --decorate'
+alias gitl='git log'
+alias gitl1='git log --oneline --decorate'
 alias gitt='git tag'
 alias gittl='git tag --list -n1'
 alias gitta='git tag -am'
