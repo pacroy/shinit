@@ -6,6 +6,17 @@ alias azls='az account list -o table'
 azaks() { 
     az aks get-credentials --resource-group "${1}" --name "${2}"
 }
+azrolels() {
+    if [ -z "${2}" ]; then
+        local subscription_json="$(az account show)"
+    else
+        local subscription_json="$(az account show --subscription "${2}")"
+    fi
+    local subscription_id="$(echo "${subscription_json}" | jq -r '.id')"
+    local subscription_name="$(echo "${subscription_json}" | jq -r '.name')"
+    echo "Role assignments to ${1} under subscription ${subscription_id} (${subscription_name}):"
+    az role assignment list --all  --output table --assignee "${1}" --subscription "${subscription_id}"
+}
 
 # Kubernetes CLI
 alias kc='kubectl'
