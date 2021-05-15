@@ -17,6 +17,17 @@ azrolels() {
     echo "Role assignments to ${1} under subscription ${subscription_id} (${subscription_name}):"
     az role assignment list --all  --output table --assignee "${1}" --subscription "${subscription_id}"
 }
+azrolecr() {
+    if [ -z "${1}" ] || [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
+        printf 'Create a new role assignment\n\n'
+        printf 'Usage: azrolecr <assignee> <role> <scope>\n\n'
+        printf '  <assignee> : Object id, user sign-in name, or service principal name\n'
+        printf '  <role>     : Role name or id\n'
+        printf '  <scope>    : e.g. /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup\n\n'
+    else
+        az role assignment create --assignee "${1}" --role "${2}" --scope "${3}" --output table
+    fi
+}
 
 # Kubernetes CLI
 alias kc='kubectl'
