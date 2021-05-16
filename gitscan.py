@@ -5,6 +5,7 @@
 # - [python - Convert bytes to a string - Stack Overflow](https://stackoverflow.com/questions/606191/convert-bytes-to-a-string)
 # - [python - How to check if the string is empty? - Stack Overflow](https://stackoverflow.com/questions/9573244/how-to-check-if-the-string-is-empty)
 # - [python - How do I read the first line of a string? - Stack Overflow](https://stackoverflow.com/questions/11833266/how-do-i-read-the-first-line-of-a-string)
+# - [python - Printing Lists as Tabular Data - Stack Overflow](https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data)
 import os, sys, getopt, subprocess, re
 
 class bcolors:
