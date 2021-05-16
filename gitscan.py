@@ -2,7 +2,7 @@
 # Scan each directory for Git status
 # References:
 # - [shell - How to execute a program or call a system command from Python - Stack Overflow](https://stackoverflow.com/questions/89228/how-to-execute-a-program-or-call-a-system-command-from-python)
-import os, sys, getopt, subprocess
+import os, sys, getopt, subprocess, re
 
 class bcolors:
     HEADER = '\033[95m'
@@ -54,23 +54,21 @@ def main(argv):
         print(f"{bcolors.FAIL}Error: '{directory}' does not exist.{bcolors.ENDC}")
         sys.exit(92)
 
+    branchRegex = re.compile(r"On branch (.+)\n")
+    cleanRegex = re.compile(r"nothing to commit")
     for item in os.listdir(directory):
         abspath = os.path.join(directory, item)
         if os.path.isdir(abspath):
-            print(item)
+            print(item, end="")
             os.chdir(abspath)
             result = subprocess.run(["git", "status"], stdout=subprocess.PIPE)
-            print(result.stdout.decode("utf-8"))
-    #         filename, ext = os.path.splitext(item)
-    #         if not extensionRegex.findall(ext):
-    #             newname = item + f".{extension}"
-    #             newabspath = os.path.join(directory, newname)
-    #             print(f"{item}\t{bcolors.WARNING}->\t{newname}{bcolors.ENDC}")
-    #             if not dry_run:
-    #                 shutil.move(abspath, newabspath)
-    #         else:
-    #             if show_all:
-    #                 print(f"{item}")
+            stdout = result.stdout.decode("utf-8")
+            branch = branchRegex.findall(stdout)[0]
+            cleanMatchObject = cleanRegex.search(stdout)
+            if cleanMatchObject is None:
+                print(f"\t{bcolors.WARNING}{branch}\tdirty{bcolors.ENDC}")
+            else:
+                print(f"\t{bcolors.OKGREEN}{branch}\tclean{bcolors.ENDC}")
 
 if __name__ == "__main__":
     main(sys.argv[1:])
