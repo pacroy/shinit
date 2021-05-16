@@ -3,6 +3,8 @@
 # References:
 # - [shell - How to execute a program or call a system command from Python - Stack Overflow](https://stackoverflow.com/questions/89228/how-to-execute-a-program-or-call-a-system-command-from-python)
 # - [python - Convert bytes to a string - Stack Overflow](https://stackoverflow.com/questions/606191/convert-bytes-to-a-string)
+# - [python - How to check if the string is empty? - Stack Overflow](https://stackoverflow.com/questions/9573244/how-to-check-if-the-string-is-empty)
+# - [python - How do I read the first line of a string? - Stack Overflow](https://stackoverflow.com/questions/11833266/how-do-i-read-the-first-line-of-a-string)
 import os, sys, getopt, subprocess, re
 
 class bcolors:
@@ -62,14 +64,19 @@ def main(argv):
         if os.path.isdir(abspath):
             print(item, end="")
             os.chdir(abspath)
-            result = subprocess.run(["git", "status"], stdout=subprocess.PIPE)
+            result = subprocess.run(["git", "status"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout = result.stdout.decode("utf-8")
-            branch = branchRegex.findall(stdout)[0]
-            cleanMatchObject = cleanRegex.search(stdout)
-            if cleanMatchObject is None:
-                print(f"\t{bcolors.WARNING}{branch}\tdirty{bcolors.ENDC}")
+            stderr = result.stderr.decode("utf-8")
+            stderr_1stline = stderr.partition('\n')[0]
+            if stderr:
+                print(f"\t{bcolors.FAIL}{stderr_1stline}{bcolors.ENDC}")
             else:
-                print(f"\t{bcolors.OKGREEN}{branch}\tclean{bcolors.ENDC}")
+                branch = branchRegex.findall(stdout)[0]
+                cleanMatchObject = cleanRegex.search(stdout)
+                if cleanMatchObject is None:
+                    print(f"\t{bcolors.WARNING}{branch}\tdirty{bcolors.ENDC}")
+                else:
+                    print(f"\t{bcolors.OKGREEN}{branch}\tclean{bcolors.ENDC}")
 
 if __name__ == "__main__":
     main(sys.argv[1:])
