@@ -2,6 +2,7 @@
 # Scan each directory for Git status
 # References:
 # - [shell - How to execute a program or call a system command from Python - Stack Overflow](https://stackoverflow.com/questions/89228/how-to-execute-a-program-or-call-a-system-command-from-python)
+# - [python - Convert bytes to a string - Stack Overflow](https://stackoverflow.com/questions/606191/convert-bytes-to-a-string)
 import os, sys, getopt, subprocess, re
 
 class bcolors:
