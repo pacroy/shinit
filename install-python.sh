@@ -14,7 +14,7 @@ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer 
 # Configure .bashrc
 {
     # shellcheck disable=SC2016
-    printf '\nexport PATH="/home/pacroy/.pyenv/bin:$PATH"\n'
+    printf '\nexport PATH="%s/.pyenv/bin:$PATH"\n' "${HOME}"
     # shellcheck disable=SC2016
     printf 'eval "$(pyenv init -)"\n'
     # shellcheck disable=SC2016
@@ -24,7 +24,7 @@ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer 
 # Configure .zshrc
 {
     # shellcheck disable=SC2016
-    printf '\nexport PATH="/home/pacroy/.pyenv/bin:$PATH"\n'
+    printf '\nexport PATH="%s/.pyenv/bin:$PATH"\n' "${HOME}"
     # shellcheck disable=SC2016
     printf 'eval "$(pyenv init -)"\n'
     # shellcheck disable=SC2016
