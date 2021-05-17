@@ -12,7 +12,7 @@ if [ ! -d ~/bin ]; then
 fi 
 
 username=$(whoami)
-if [ ! -e "~/${username}" ] then
+if [ ! -e "~/${username}" ]; then
     echo "Creating symbolic link ~/${username} ..."
     usrdir_default="/mnt/c/Users/${username}/dev"
     read -rp "Home path on host [ENTER for ${usrdir_default}]:" usrdir_input </dev/tty
