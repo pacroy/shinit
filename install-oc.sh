@@ -30,10 +30,6 @@ tar -C "${HOME}" -xzf "${HOME}/oc4.tgz" oc
 sudo install -o root -g root -m 0755 "${HOME}/oc" /usr/local/bin/oc4
 oc4 version
 
-# Clean up
-rm "${HOME}/oc"
-rm "${HOME}/oc.tgz"
-
 # Clean up oc4
 rm "${HOME}/oc"
 rm "${HOME}/oc4.tgz"
