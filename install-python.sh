@@ -11,24 +11,24 @@ set -o pipefail
 # Install pyenv
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 
-# Configure .bashrc
+# Configure bash
 {
-    # shellcheck disable=SC2016
-    printf '\nexport PATH="%s/.pyenv/bin:$PATH"\n' "${HOME}"
-    # shellcheck disable=SC2016
-    printf 'eval "$(pyenv init -)"\n'
-    # shellcheck disable=SC2016
-    printf 'eval "eval$(pyenv virtualenv-init -)"\n'
+    printf 'export PYENV_ROOT="$HOME/.pyenv"\n'
+    printf 'export PATH="$PYENV_ROOT/bin:$PATH"\n'
+    printf 'eval "$(pyenv init --path)"\n\n'
+} | cat - "${HOME}/.profile" > "/tmp/.profile" && mv "/tmp/.profile" "${HOME}/.profile"
+{
+    printf '\neval "$(pyenv init -)"\n'
 } >> "${HOME}/.bashrc"
 
-# Configure .zshrc
+# Configure zsh
 {
-    # shellcheck disable=SC2016
-    printf '\nexport PATH="%s/.pyenv/bin:$PATH"\n' "${HOME}"
-    # shellcheck disable=SC2016
-    printf 'eval "$(pyenv init -)"\n'
-    # shellcheck disable=SC2016
-    printf 'eval "eval$(pyenv virtualenv-init -)"\n' 
+    printf '\nexport PYENV_ROOT="$HOME/.pyenv"\n'
+    printf 'export PATH="$PYENV_ROOT/bin:$PATH"\n'
+    printf 'eval "$(pyenv init --path)"\n'
+} >> "${HOME}/.zprofile"
+{
+    printf '\neval "$(pyenv init -)"\n'
 } >> "${HOME}/.zshrc"
 
 # Install build dependencies
