@@ -2,20 +2,20 @@
 set -o errexit
 set -o pipefail
 
-if [ ! -d ~/dev ]; then 
-    if [ -z "${WSLENV}" ]; then
-        echo "Creating directory ~/dev ..."
-        mkdir ~/dev
-    else
-        devdir_default="/mnt/c/Users/$(whoami)/dev"
-        read -rp "dev path [ENTER for ${devdir_default}]:" devdir_input </dev/tty
-        dev_path=${devdir_input:-${devdir_default}}
-        mkdir -p "${dev_path}"
-        ln -s "${dev_path}" ~/dev
-    fi
+if [ ! -d ~/dev ]; then
+    echo "Creating directory ~/dev (if not exist) ..."
+    mkdir -p ~/dev
 fi
+if [ ! -d ~/bin ]; then
+    echo "Creating directory ~/bin (if not exist) ..."
+    mkdir -p ~/bin;
+fi 
 
-if [ ! -d ~/bin ]; then 
-    echo "Creating directory ~/bin ..."
-    mkdir ~/bin; 
+username=$(whoami)
+if [ ! -e ~/${username} ]; then
+    echo "Creating symbolic link ~/${username} ..."
+    usrdir_default="/mnt/c/Users/${username}/dev"
+    read -rp "Home path on host [ENTER for ${usrdir_default}]:" usrdir_input </dev/tty
+    usr_path=${usrdir_input:-${usrdir_default}}
+    ln -s "${usr_path}" "~/${username}"
 fi
