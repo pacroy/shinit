@@ -2,7 +2,7 @@
 set -o errexit
 set -o pipefail
 
-if [ ! -d ~/.ssh ] || ! ls ~/.ssh/id* > /dev/null; then
+if [ ! -d ~/.ssh ] || ! ls ~/.ssh/id* &>/dev/null; then
     echo "Generate a new SSH keypair..."
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
 
