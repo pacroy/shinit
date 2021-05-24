@@ -7,7 +7,7 @@ RELEASE_DATE="20210415"
 AZCOPY_VERSION="10.10.0"
 
 # Download
-curl -fL " https://azcopyvnext.azureedge.net/release${RELEASE_DATE}/azcopy_linux_amd64_${AZCOPY_VERSION}.tar.gz" -o "${HOME}/azcopy.tar.gz"
+curl -fL "https://azcopyvnext.azureedge.net/release${RELEASE_DATE}/azcopy_linux_amd64_${AZCOPY_VERSION}.tar.gz" -o "${HOME}/azcopy.tar.gz"
 tar -xzf "${HOME}/azcopy.tar.gz"
 
 # Install
