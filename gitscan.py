@@ -21,16 +21,17 @@ class bcolors:
 
 def print_usage():
     print("Usage:")
-    print("  python gitscan.py [-d directory] [--show-all]")
+    print("  python gitscan.py [-d directory] [-b branch] [--show-all]")
     print()
     print("Arguments:")
-    print("  -d, --directory directory : Specify a directory to scan. Omit to scan the current directory.")
-    print("  -h, --help                : Print this usage string.")
-    print("      --show-all            : Print all directories. Omit to print only unclean ones.")
+    print("  -d, --directory directory  : Specify a directory to scan. Omit to scan the current directory.")
+    print("  -b, --default-branch branch: Specify the default branch. Default is 'main'.")
+    print("  -h, --help                 : Print this usage string.")
+    print("      --show-all             : Print all directories. Omit to print only unclean ones.")
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv, "hd:", ["help", "directory=", "show-all"])
+        opts, args = getopt.getopt(argv, "hd:b:", ["help", "directory=", "show-all", "default-branch="])
     except getopt.GetoptError as err:
         print(f"{bcolors.FAIL}Error: {err}{bcolors.ENDC}")
         print_usage()
@@ -38,6 +39,7 @@ def main(argv):
 
     directory = ""
     show_all = False
+    default_branch = "main"
 
     for opt, arg in opts:
         if opt in ("-h", "--help"):
@@ -47,6 +49,8 @@ def main(argv):
             directory = os.path.abspath(arg)
         elif opt == "--show-all":
             show_all = True
+        elif opt in ("-b", "--default-branch"):
+            default_branch = arg
     
     if not directory:
         directory = os.getcwd()
@@ -73,11 +77,16 @@ def main(argv):
                 print(f"\t{bcolors.FAIL}{stderr_1stline}{bcolors.ENDC}")
             else:
                 branch = branchRegex.findall(stdout)[0]
+                if branch == default_branch:
+                    print(f"\t{bcolors.OKGREEN}{branch}{bcolors.ENDC}", end='')
+                else:
+                    print(f"\t{bcolors.WARNING}{branch}{bcolors.ENDC}", end='')
+
                 cleanMatchObject = cleanRegex.search(stdout)
                 if cleanMatchObject is None:
-                    print(f"\t{bcolors.WARNING}{branch}\tdirty{bcolors.ENDC}")
+                    print(f"\t{bcolors.WARNING}dirty{bcolors.ENDC}")
                 else:
-                    print(f"\t{bcolors.OKGREEN}{branch}\tclean{bcolors.ENDC}")
+                    print(f"\t{bcolors.OKGREEN}clean{bcolors.ENDC}")
 
 if __name__ == "__main__":
     main(sys.argv[1:])
