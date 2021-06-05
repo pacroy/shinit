@@ -64,6 +64,7 @@ def main(argv):
 
     branchRegex = re.compile(r"On branch (.+)\n")
     cleanRegex = re.compile(r"nothing to commit")
+    notGitRegex = re.compile(r"not a git repository")
     for item in os.listdir(directory):
         abspath = os.path.join(directory, item)
         if os.path.isdir(abspath):
@@ -74,7 +75,11 @@ def main(argv):
             stderr = result.stderr.decode("utf-8")
             stderr_1stline = stderr.partition('\n')[0]
             if stderr:
-                print(f"\t{bcolors.FAIL}{stderr_1stline}{bcolors.ENDC}")
+                notGitMatchObject = notGitRegex.search(stderr_1stline)
+                if notGitMatchObject is not None:
+                    print(f"\t{bcolors.FAIL}{notGitMatchObject.group()}{bcolors.ENDC}")
+                else:
+                    print(f"\t{bcolors.FAIL}{stderr_1stline}{bcolors.ENDC}")
             else:
                 branch = branchRegex.findall(stdout)[0]
                 if branch == default_branch:
@@ -82,8 +87,7 @@ def main(argv):
                 else:
                     print(f"\t{bcolors.WARNING}{branch}{bcolors.ENDC}", end='')
 
-                cleanMatchObject = cleanRegex.search(stdout)
-                if cleanMatchObject is None:
+                if cleanRegex.search(stdout) is None:
                     print(f"\t{bcolors.WARNING}dirty{bcolors.ENDC}")
                 else:
                     print(f"\t{bcolors.OKGREEN}clean{bcolors.ENDC}")
