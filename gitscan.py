@@ -68,7 +68,11 @@ def main(argv):
     for item in os.listdir(directory):
         abspath = os.path.join(directory, item)
         if os.path.isdir(abspath):
-            print(item, end="")
+            item_print = item
+            if len(item_print) > 20:
+                item_print = item[0:20] + "..."
+            print(item_print.ljust(23), end="")
+            
             os.chdir(abspath)
             result = subprocess.run(["git", "status"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout = result.stdout.decode("utf-8")
