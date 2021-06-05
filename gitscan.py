@@ -21,13 +21,13 @@ class bcolors:
 
 def print_usage():
     print("Usage:")
-    print("  python gitscan.py [-d directory] [-b branch] [--show-all]")
+    print("  python gitscan.py [-d directory] [-b branch] [-a]")
     print()
     print("Arguments:")
     print("  -d, --directory directory  : Specify a directory to scan. Omit to scan the current directory.")
     print("  -b, --default-branch branch: Specify the default branch. Default is 'main'.")
     print("  -h, --help                 : Print this usage string.")
-    print("      --show-all             : Print all directories. Omit to print only unclean ones.")
+    print("  -a, --show-all             : Print all directories. Omit to print only unclean ones.")
 
 def format_column_text(text, length):
     if len(text) > length:
@@ -37,7 +37,7 @@ def format_column_text(text, length):
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv, "hd:b:", ["help", "directory=", "show-all", "default-branch="])
+        opts, args = getopt.getopt(argv, "hd:b:a", ["help", "directory=", "show-all", "default-branch="])
     except getopt.GetoptError as err:
         print(f"{bcolors.FAIL}Error: {err}{bcolors.ENDC}")
         print_usage()
@@ -53,7 +53,7 @@ def main(argv):
             sys.exit()
         elif opt in ("-d", "--directory"):
             directory = os.path.abspath(arg)
-        elif opt == "--show-all":
+        elif opt in ("-a", "--show-all"):
             show_all = True
         elif opt in ("-b", "--default-branch"):
             default_branch = arg
@@ -81,31 +81,41 @@ def main(argv):
     for item in directories:
         abspath = os.path.join(directory, item)
         if os.path.isdir(abspath):
-            print(format_column_text(item, 23).ljust(23), end="")
             os.chdir(abspath)
             result = subprocess.run(["git", "status"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout = result.stdout.decode("utf-8")
             stderr = result.stderr.decode("utf-8")
-            stderr_1stline = stderr.partition('\n')[0]
+            
+            result_line = format_column_text(item, 23).ljust(23)
+            result_bad = False
+
             if stderr:
+                result_bad = True
+                stderr_1stline = stderr.partition('\n')[0]
                 notGitMatchObject = notGitRegex.search(stderr_1stline)
-                print(f"\t{'n/a'.ljust(23)}", end="")
+                result_line += f"\t{'n/a'.ljust(23)}"
                 if notGitMatchObject is not None:
-                    print(f"\t{bcolors.FAIL}{notGitMatchObject.group()}{bcolors.ENDC}")
+                    result_line += f"\t{bcolors.FAIL}{notGitMatchObject.group()}{bcolors.ENDC}"
                 else:
-                    print(f"\t{bcolors.FAIL}{stderr_1stline}{bcolors.ENDC}")
+                    result_line += f"\t{bcolors.FAIL}{stderr_1stline}{bcolors.ENDC}"
             else:
                 branch = branchRegex.findall(stdout)[0]
                 branch_print = format_column_text(branch, 23).ljust(23)
                 if branch == default_branch:
-                    print(f"\t{bcolors.OKGREEN}{branch_print}{bcolors.ENDC}", end="")
+                    result_line += f"\t{bcolors.OKGREEN}{branch_print}{bcolors.ENDC}"
                 else:
-                    print(f"\t{bcolors.WARNING}{branch_print}{bcolors.ENDC}", end="")
+                    result_bad = True
+                    result_line += f"\t{bcolors.WARNING}{branch_print}{bcolors.ENDC}"
 
                 if cleanRegex.search(stdout) is None:
-                    print(f"\t{bcolors.WARNING}dirty{bcolors.ENDC}")
+                    result_bad = True
+                    result_line += f"\t{bcolors.WARNING}dirty{bcolors.ENDC}"
                 else:
-                    print(f"\t{bcolors.OKGREEN}clean{bcolors.ENDC}")
+                    result_line += f"\t{bcolors.OKGREEN}clean{bcolors.ENDC}"
+
+            if show_all or result_bad:
+                print(result_line)
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
