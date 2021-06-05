@@ -71,7 +71,7 @@ alias gitu='git pull'
 alias gitr='git remote -v'
 alias gita='git add'
 alias gitc='git commit' 
-alias gitscan="${INITDIR}/gitscan.py -d"
+alias gitscan='${INITDIR}/gitscan.py -d'
 
 # Update
 # shellcheck disable=SC2139
