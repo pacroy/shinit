@@ -71,8 +71,14 @@ def main(argv):
     branchRegex = re.compile(r"On branch (.+)\n")
     cleanRegex = re.compile(r"nothing to commit")
     notGitRegex = re.compile(r"not a git repository")
+
+    directories = os.listdir(directory)
+    if len(directories) == 0:
+        print("No repository found.")
+        return
+        
     print(bcolors.HEADER + "Repository".ljust(23) + "\t" + "Branch".ljust(23) + "\t" + "Status" + bcolors.ENDC)
-    for item in os.listdir(directory):
+    for item in os.listdir(directories):
         abspath = os.path.join(directory, item)
         if os.path.isdir(abspath):
             print(format_column_text(item, 23).ljust(23), end="")
