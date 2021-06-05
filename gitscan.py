@@ -71,7 +71,7 @@ def main(argv):
     branchRegex = re.compile(r"On branch (.+)\n")
     cleanRegex = re.compile(r"nothing to commit")
     notGitRegex = re.compile(r"not a git repository")
-    print(bcolors.HEADER + "Repository".ljust(23) + " " + "Branch".ljust(23) + " " + "Status" + bcolors.ENDC)
+    print(bcolors.HEADER + "Repository".ljust(23) + "\t" + "Branch".ljust(23) + "\t" + "Status" + bcolors.ENDC)
     for item in os.listdir(directory):
         abspath = os.path.join(directory, item)
         if os.path.isdir(abspath):
@@ -83,6 +83,7 @@ def main(argv):
             stderr_1stline = stderr.partition('\n')[0]
             if stderr:
                 notGitMatchObject = notGitRegex.search(stderr_1stline)
+                print(f"\t{'n/a'.ljust(23)}", end="")
                 if notGitMatchObject is not None:
                     print(f"\t{bcolors.FAIL}{notGitMatchObject.group()}{bcolors.ENDC}")
                 else:
@@ -91,9 +92,9 @@ def main(argv):
                 branch = branchRegex.findall(stdout)[0]
                 branch_print = format_column_text(branch, 23).ljust(23)
                 if branch == default_branch:
-                    print(f"\t{bcolors.OKGREEN}{branch_print}{bcolors.ENDC}", end='')
+                    print(f"\t{bcolors.OKGREEN}{branch_print}{bcolors.ENDC}", end="")
                 else:
-                    print(f"\t{bcolors.WARNING}{branch_print}{bcolors.ENDC}", end='')
+                    print(f"\t{bcolors.WARNING}{branch_print}{bcolors.ENDC}", end="")
 
                 if cleanRegex.search(stdout) is None:
                     print(f"\t{bcolors.WARNING}dirty{bcolors.ENDC}")
