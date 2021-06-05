@@ -71,6 +71,8 @@ def main(argv):
     branchRegex = re.compile(r"On branch (.+)\n")
     cleanRegex = re.compile(r"nothing to commit")
     notGitRegex = re.compile(r"not a git repository")
+    aheadRegex =re.compile(r"Your branch is ahead of '.+/.+' by (\d+) commit")
+    behindRegex =re.compile(r"Your branch is behind '.+/.+' by (\d+) commit")
 
     directories = os.listdir(directory)
     if len(directories) == 0:
@@ -112,6 +114,16 @@ def main(argv):
                     result_line += f"\t{bcolors.WARNING}dirty{bcolors.ENDC}"
                 else:
                     result_line += f"\t{bcolors.OKGREEN}clean{bcolors.ENDC}"
+
+                aheadMatchObject = aheadRegex.search(stdout)
+                if aheadMatchObject is not None:
+                    result_line += f", {bcolors.WARNING}+{aheadMatchObject.group(1)}{bcolors.ENDC}"
+                    result_bad = True
+                else:
+                    behindMatchObject = behindRegex.search(stdout)
+                    if behindMatchObject is not None:
+                        result_line += f", {bcolors.WARNING}-{behindMatchObject.group(1)}{bcolors.ENDC}"
+                        result_bad = True
 
             if show_all or result_bad:
                 print(result_line)
