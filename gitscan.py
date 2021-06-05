@@ -29,6 +29,12 @@ def print_usage():
     print("  -h, --help                 : Print this usage string.")
     print("      --show-all             : Print all directories. Omit to print only unclean ones.")
 
+def format_column_text(text, length):
+    if len(text) > length:
+        return text[0:length-3] + "..."
+    else:
+        return text
+
 def main(argv):
     try:
         opts, args = getopt.getopt(argv, "hd:b:", ["help", "directory=", "show-all", "default-branch="])
@@ -68,11 +74,7 @@ def main(argv):
     for item in os.listdir(directory):
         abspath = os.path.join(directory, item)
         if os.path.isdir(abspath):
-            item_print = item
-            if len(item_print) > 20:
-                item_print = item[0:20] + "..."
-            print(item_print.ljust(23), end="")
-            
+            print(format_column_text(item, 23).ljust(23), end="")
             os.chdir(abspath)
             result = subprocess.run(["git", "status"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout = result.stdout.decode("utf-8")
