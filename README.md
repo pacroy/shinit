@@ -5,12 +5,12 @@ Linux Shell Initialization Scripts
 
 Usual installation
 
-```sh
-curl -fsL https://par.sh/sh-init | bash && source $HOME/.init/init.sh
+```bash
+curl -fsSL https://par.sh/sh-init | bash && source $HOME/.init/init.sh
 ```
 
 Installation behind proxy
 
-```sh
-curl -fsL https://par.sh/sh-init -x "$proxy" | bash && source $HOME/.init/init.sh
+```bash
+curl -fsSL https://raw.githubusercontent.com/pacroy/sh-init/main/install.sh -x "$proxy" | bash && source $HOME/.init/init.sh
 ```
