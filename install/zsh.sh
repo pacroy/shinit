@@ -16,5 +16,5 @@ fi
 if ! grep -qF "source ~/.init/init.sh" ~/.zshrc; then
     echo "source ~/.init/init.sh" >> ~/.zshrc
 fi
-# shellcheck disable=SC1091
+
 source "${HOME}/.zshrc"

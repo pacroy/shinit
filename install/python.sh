@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2016
 # References
 # - https://github.com/pyenv/pyenv
 # - https://github.com/pyenv/pyenv-installer
