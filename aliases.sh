@@ -79,7 +79,7 @@ alias gitscan='${INITDIR}/gitscan.py -d'
 # sh commands
 alias shupdate='bash ${INITDIR}/install.sh && source ${INITDIR}/init.sh'
 shinstall() { 
-    if [ -f "$INITDIR/install/$1" ]; then
+    if [ -f "$INITDIR/install/$1.sh" ]; then
         "$INITDIR/install/$1.sh"
     else
         >&2 echo "Install script for '$1' does not exist."
