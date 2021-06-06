@@ -74,6 +74,7 @@ alias gita='git add'
 alias gitc='git commit'
 alias gitca='git commit -am'
 alias gitf='git fetch'
+alias gitsha='git rev-parse --short HEAD'
 gitscan() {
     if [ -z "$1" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
         "${INITDIR}/python/gitscan.py" --help
