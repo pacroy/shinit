@@ -97,7 +97,7 @@ shversion() {
        cd $INITDIR
        echo "sh-init: $(git rev-parse --short HEAD)"
        cd $INITDIR/python
-       echo "python : $(git rev-parse --short HEAD)")'
+       echo "python : $(git rev-parse --short HEAD)"
     )
 }
 
