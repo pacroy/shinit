@@ -88,9 +88,9 @@ shinstall() {
 }
 shversion() {
    (
-       cd $INITDIR
+       cd "$INITDIR" || return
        echo "sh-init: $(git rev-parse --short HEAD)"
-       cd $INITDIR/python
+       cd "$INITDIR/python" || return
        echo "python : $(git rev-parse --short HEAD)"
     )
 }
