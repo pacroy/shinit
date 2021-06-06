@@ -75,7 +75,7 @@ alias gitc='git commit'
 alias gitca='git commit -am'
 alias gitf='git fetch'
 gitscan() {
-    if [ -z "$1" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    if [ -z "$1" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
         "${INITDIR}/python/gitscan.py" --help
     else
         "${INITDIR}/python/gitscan.py" -d "$@"
