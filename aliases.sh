@@ -91,6 +91,14 @@ shinstall() {
         >&2 echo "Install script for '$1' does not exist."
     fi
 }
+shversion() {
+   (
+       cd $INITDIR
+       echo "sh-init: $(git rev-parse --short HEAD)"
+       cd $INITDIR/python
+       echo "python : $(git rev-parse --short HEAD)")'
+    )
+}
 
 # Standard
 alias ll='ls -AlFh'
