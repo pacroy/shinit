@@ -72,6 +72,7 @@ alias gitr='git remote'
 alias gitrl='git remote -v'
 alias gita='git add'
 alias gitc='git commit'
+alias gitca='git commit -am'
 alias gitf='git fetch'
 alias gitscan='${INITDIR}/gitscan.py -d'
 
