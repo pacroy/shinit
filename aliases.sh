@@ -74,7 +74,13 @@ alias gita='git add'
 alias gitc='git commit'
 alias gitca='git commit -am'
 alias gitf='git fetch'
-alias gitscan='${INITDIR}/gitscan.py -d'
+gitscan() {
+    if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+        "${INITDIR}/python/gitscan.py" "$1"
+    else
+        "${INITDIR}/python/gitscan.py" -d "$@"
+    fi
+}
 
 # sh commands
 alias shupdate='bash ${INITDIR}/install.sh && source ${INITDIR}/init.sh'
