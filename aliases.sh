@@ -76,8 +76,15 @@ alias gitca='git commit -am'
 alias gitf='git fetch'
 alias gitscan='${INITDIR}/gitscan.py -d'
 
-# Update
+# sh commands
 alias shupdate='bash ${INITDIR}/install.sh && source ${INITDIR}/init.sh'
+shinstall() { 
+    if [ -f "$INITDIR/install/$1" ]; then
+        $INITDIR/install/$1
+    else
+        >&2 echo "Install script for '$1' does not exist."
+    fi
+}
 
 # Standard
 alias ll='ls -AlFh'
