@@ -71,7 +71,8 @@ alias gitu='git pull'
 alias gitr='git remote'
 alias gitrl='git remote -v'
 alias gita='git add'
-alias gitc='git commit' 
+alias gitc='git commit'
+alias gitf='git fetch'
 alias gitscan='${INITDIR}/gitscan.py -d'
 
 # Update
