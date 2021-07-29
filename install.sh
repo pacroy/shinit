@@ -12,16 +12,8 @@ if [ -d "${INITDIR}" ]; then
     )
 else
     git clone --quiet --depth 1 https://github.com/pacroy/sh-init.git "${INITDIR}"
-fi
-
-if [ -d "${INITDIR}/python" ]; then
-    (   
-        cd "${INITDIR}/python"
-        git reset --quiet --hard main
-        git pull --quiet 
-    )
-else
-    git clone --quiet --depth 1 https://github.com/pacroy/python-cli-utils.git "${INITDIR}/python"
+    git submodule init
+    git submodule update
 fi
 
 "${INITDIR}/install2.sh" "${INITDIR}"
