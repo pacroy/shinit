@@ -30,7 +30,8 @@ curl -fL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terrafor
 unzip -j "${HOME}/terraform.zip" terraform -d "${HOME}"
 
 # Install
-sudo install -o root -g root -m 0755 "${HOME}/terraform" /usr/local/bin/terraform
+mkdir -p "${HOME}/bin"
+install -o "${USER}" -g "$USER" -m 0755 "${HOME}/terraform" "${HOME}/bin/terraform"
 terraform version
 
 # Clean up
