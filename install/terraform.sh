@@ -16,7 +16,9 @@ fi
 
 # Check input variables
 if [ -z "${TERRAFORM_VERSION}" ]; then
-	terraform_latest_tag=$(curl -fsSL https://api.github.com/repos/hashicorp/terraform/releases/latest | jq -r ".tag_name")
+	readonly tf_version_url="https://api.github.com/repos/hashicorp/terraform/releases/latest"
+	echo "TERRAFORM_VERSION is not specified. Getting the latest version from ${tf_version_url} ..."
+	terraform_latest_tag=$(curl -fsSL ${tf_version_url} | jq -r ".tag_name")
 	terraform_latest_version=${terraform_latest_tag#"v"}
 	TERRAFORM_VERSION="$terraform_latest_version"
 fi
