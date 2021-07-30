@@ -24,17 +24,17 @@ if [ -z "${TERRAFORM_VERSION}" ]; then
 fi
 
 # Download
+readonly install_dir="${HOME}/.install"
+mkdir -p "${install_dir}"
 download_url="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" 
 echo "Downloading from ${download_url} ..."
-curl -fL "${download_url}" -o "${HOME}/terraform.zip"
-unzip -j "${HOME}/terraform.zip" terraform -d "${HOME}"
+curl -fL "${download_url}" -o "${install_dir}/terraform.zip"
+unzip -j "${install_dir}/terraform.zip" terraform -d "${install_dir}"
 
 # Install
 mkdir -p "${HOME}/bin"
-install -o "${USER}" -g "$USER" -m 0755 "${HOME}/terraform" "${HOME}/bin/terraform"
+install -o "${USER}" -g "$USER" -m 0755 "${install_dir}/terraform" "${HOME}/bin/terraform"
 terraform version
 
 # Clean up
-rm "${HOME}/terraform"
-rm "${HOME}/terraform.zip"
-
+rm -rf "${install_dir}"
