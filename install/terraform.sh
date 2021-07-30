@@ -24,9 +24,9 @@ if [ -z "${TERRAFORM_VERSION}" ]; then
 fi
 
 # Download
-url="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" 
-echo "Downloading from $url ..."
-curl -fL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" -o "${HOME}/terraform.zip"
+download_url="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" 
+echo "Downloading from ${download_url} ..."
+curl -fL "${download_url}" -o "${HOME}/terraform.zip"
 unzip -j "${HOME}/terraform.zip" terraform -d "${HOME}"
 
 # Install
