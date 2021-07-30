@@ -34,7 +34,12 @@ unzip -j "${install_dir}/terraform.zip" terraform -d "${install_dir}"
 # Install
 mkdir -p "${HOME}/bin"
 install -o "${USER}" -g "$USER" -m 0755 "${install_dir}/terraform" "${HOME}/bin/terraform"
-terraform version
+"${HOME}/bin/terraform" version
+
+# Set PATH
+if ! which terraform; then
+  echo >&2 "WARNING: Please add '${HOME}/bin' to your PATH environment variable."
+fi
 
 # Clean up
 rm -rf "${install_dir}"
