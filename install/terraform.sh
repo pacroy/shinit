@@ -11,7 +11,7 @@ which unzip > /dev/null || softwares+="unzip "
 which jq > /dev/null || softwares+="jq "
 if [ -n "$softwares" ]; then
     sudo apt update
-    sudo apt install -y "$softwares"
+    sudo apt install -y $softwares
 fi
 
 # Check input variables
