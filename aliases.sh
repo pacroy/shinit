@@ -87,11 +87,10 @@ shinstall() {
     fi
 }
 shversion() {
-   (
-       cd "$INITDIR" || return
-       echo "sh-init: $(git rev-parse --short HEAD)"
-       cd "$INITDIR/python" || return
-       echo "python : $(git rev-parse --short HEAD)"
+    (
+        cd "$INITDIR" || return
+        git rev-parse --short HEAD
+        git submodule status
     )
 }
 
