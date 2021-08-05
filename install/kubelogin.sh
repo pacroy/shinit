@@ -15,21 +15,25 @@ fi
 
 # Check version
 if [ -z "${KUBELOGIN_VERSION}" ]; then
-    kubelogin_latest_tag=$(curl -fsSL terraform_latest_tag=$(curl -fsSL ${version_url} | jq -r ".tag_name") | jq -r ".tag_name")
-    kubelogin_latest_version=${terraform_latest_tag#"v"}
+    readonly version_url="https://api.github.com/repos/Azure/kubelogin/releases/latest"
+    kubelogin_latest_tag=$(curl -fsSL ${version_url} | jq -r ".tag_name")
+    kubelogin_latest_version=${kubelogin_latest_tag#"v"}
 	echo "KUBELOGIN_VERSION is not specified. Will download the latest version $kubelogin_latest_version."
 	KUBELOGIN_VERSION="$kubelogin_latest_version"
 fi
 
 # Download
 readonly temp_dir="${HOME}/.installtmp"
-curl -L "https://github.com/Azure/kubelogin/releases/download/v${KUBELOGIN_VERSION}/kubelogin-linux-amd64.zip" -o "${temp_dir}/kubelogin.zip"
+mkdir -p "${temp_dir}"
+echo "Downloading from ${download_url} ..."
+download_url="https://github.com/Azure/kubelogin/releases/download/v${KUBELOGIN_VERSION}/kubelogin-linux-amd64.zip" 
+curl -fL "${download_url}" -o "${temp_dir}/kubelogin.zip"
 unzip -j "${temp_dir}/kubelogin.zip" bin/linux_amd64/kubelogin -d "${temp_dir}"
 
 # Install
 mkdir -p "${HOME}/bin"
 install -o "${USER}" -g "$USER" -m 0755 "${temp_dir}/kubelogin" "${HOME}/bin/kubelogin"
-"${HOME}/bin/kubelogin" version
+"${HOME}/bin/kubelogin" --version
 
 # Set PATH
 if ! which kubelogin; then
