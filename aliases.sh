@@ -58,7 +58,8 @@ alias tg='terragrunt'
 
 # Git
 alias gitl='git log'
-alias gitl1='git log --oneline --decorate'
+alias gitl1="git log --oneline --decorate --format=format:'%C(blue)%h%C(reset) %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)'"
+# git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 alias gitt='git tag'
 alias gittl='git tag --list -n1 --sort=-tag'
 alias gitta='git tag -am'
