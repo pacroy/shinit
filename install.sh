@@ -8,7 +8,9 @@ if [ -d "${INITDIR}" ]; then
     (   
         cd "${INITDIR}"
         git reset --quiet --hard main
-        git pull --quiet 
+        git pull --quiet
+        if ! git submodule status; then git submodule init; fi
+        git submodule update
     )
 else
     git clone --quiet --depth 1 https://github.com/pacroy/sh-init.git "${INITDIR}"
