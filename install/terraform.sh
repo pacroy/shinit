@@ -11,6 +11,7 @@ which unzip > /dev/null || softwares+="unzip "
 which jq > /dev/null || softwares+="jq "
 if [ -n "$softwares" ]; then
     sudo apt update
+	# shellcheck disable=SC2086
     sudo apt install -y $softwares
 fi
 
