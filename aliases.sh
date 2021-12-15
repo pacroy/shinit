@@ -36,6 +36,14 @@ azrolecr() {
 # AWS CLI
 alias awsuser='aws iam get-user'
 alias awsconfig='aws configure list'
+alias awsprofile='aws configure list-profiles'
+awsset() {
+    if [ -n "${1}" ]; then 
+        export AWS_PROFILE="${1}"
+    else
+        unset AWS_PROFILE
+    fi
+}
 
 # Kubernetes CLI
 alias kc='kubectl'
