@@ -35,6 +35,7 @@ azrolecr() {
 
 # AWS CLI
 alias awsuser='aws iam get-user'
+alias awsconfig='aws configure list'
 
 # Kubernetes CLI
 alias kc='kubectl'
