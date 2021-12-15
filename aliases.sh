@@ -33,6 +33,9 @@ azrolecr() {
     fi
 }
 
+# AWS CLI
+alias awsuser='aws iam get-user'
+
 # Kubernetes CLI
 alias kc='kubectl'
 alias kcls='kubectl config get-contexts'
