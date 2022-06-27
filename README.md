@@ -17,3 +17,20 @@ Installation behind proxy
 ```bash
 curl -fsSL https://raw.githubusercontent.com/pacroy/sh-init/main/install.sh -x "$proxy" | bash && source $HOME/.init/init.sh
 ```
+
+## Addons
+
+### zsh
+
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
+
+### .zshrc
+
+```bash
+plugins=(
+    git
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+)
+```
