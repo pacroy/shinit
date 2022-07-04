@@ -15,7 +15,6 @@
     "fallbackRetryDelay": "30s",
     "aliveStatusCodes": [
         200,
-        203,
         206
     ]
 }

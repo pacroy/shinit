@@ -16,10 +16,10 @@ name: Lint Code Base
 #############################
 on:
   push:
-    branches: [master, main]
-    
+    branches: [main]
+    # Remove the line above to run when pushing to master
   pull_request:
-    branches: [master, main]
+    branches: [main]
 
 ###############
 # Set the Job #
@@ -50,11 +50,8 @@ jobs:
       - name: Lint Code Base
         uses: github/super-linter@v4
         env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: master
+          VALIDATE_ALL_CODEBASE: true
+          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_PYTHON_BLACK: false
-          VALIDATE_PYTHON_FLAKE8: false
-          VALIDATE_PYTHON_ISORT: false
-          VALIDATE_PYTHON_MYPY: false
-          
+          VALIDATE_NATURAL_LANGUAGE: false
+          FILTER_REGEX_EXCLUDE: 'dist/.*'

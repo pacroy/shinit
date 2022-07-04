@@ -9,7 +9,10 @@ if [ -d "${INITDIR}" ]; then
         cd "${INITDIR}"
         git reset --quiet --hard main
         git pull --quiet
-        if ! git submodule status; then git submodule init; fi
+        if git submodule status; then
+            git submodule deinit --quite --force --all
+        fi
+        git submodule init --quite
         git submodule update
     )
 else
