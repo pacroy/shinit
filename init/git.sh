@@ -35,7 +35,7 @@ if [ -z "$(git config --get user.signingkey)" ]; then
     gpg --list-secret-keys --keyid-format=long
 
     echo ""
-    echo "Input GPG key if from above. IT should be an ASCII text after 'sec  rsa4096/'."
+    echo "Input GPG key id from above. The key id is an ASCII text after 'sec  rsa4096/'."
     read -rp "GPG key ID : " pgp_key_id </dev/tty
     echo "Configuring git user.signingkey=${pgp_key_id} ..."
     git config --get user.signingkey "${pgp_key_id}"
