@@ -38,7 +38,7 @@ if [ -z "$(git config --get user.signingkey)" ]; then
     echo "Input GPG key id from above. The key id is an ASCII text after 'sec  rsa4096/'."
     read -rp "GPG key ID : " pgp_key_id </dev/tty
     echo "Configuring git user.signingkey=${pgp_key_id} ..."
-    git config --get user.signingkey "${pgp_key_id}"
+    git config --global user.signingkey "${pgp_key_id}"
     echo "Configuring git commit.gpgsign=true ..."
     git config --global commit.gpgsign true
     echo "Configuring git tag.gpgSign=true ..."
