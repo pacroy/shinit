@@ -27,7 +27,7 @@ if [ -z "$(git config --get user.signingkey)" ]; then
     echo "   how long the key should be valid = <as you want e.g. 1y>"
     echo "   Real name = Your full name"
     echo "   Email address = <github_username>@users.noreply.github.com"
-    echo "   Comment = <as you want e.g. username@hotname>
+    echo "   Comment = <as you want e.g. username@hotname>"
     echo ""
     echo "Please [Enter] key to continue..." && read -p "$*"
 
