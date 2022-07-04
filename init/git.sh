@@ -29,7 +29,7 @@ if [ -z "$(git config --get user.signingkey)" ]; then
     echo "   Email address = <github_username>@users.noreply.github.com"
     echo "   Comment = <as you want e.g. username@hotname>"
     echo ""
-    echo "Please [Enter] key to continue..." && read -r
+    printf "Please [Enter] key to continue..." && read -r
 
     gpg --full-generate-key
     gpg --list-secret-keys --keyid-format=long
@@ -38,7 +38,7 @@ if [ -z "$(git config --get user.signingkey)" ]; then
     echo "Input GPG key id from above. The key id is an ASCII text after 'sec  rsa4096/'."
     read -rp "GPG key ID : " pgp_key_id </dev/tty
     echo "Configuring git user.signingkey=${pgp_key_id} ..."
-    git config --get user.signingkey "${pgp_key_id}"
+    git config --global user.signingkey "${pgp_key_id}"
     echo "Configuring git commit.gpgsign=true ..."
     git config --global commit.gpgsign true
     echo "Configuring git tag.gpgSign=true ..."
