@@ -10,7 +10,7 @@ fi
 
 if [ -z "$(git config --get user.email)" ]; then
     read -rp "Your GitHub username: " github_username </dev/tty
-    git_email="${github_username@users.noreply.github.com"
+    git_email="${github_username}@users.noreply.github.com"
     echo "Configuring git user.email=${git_email} ..."
     git config --get user.email "${git_email}"
 fi
@@ -26,8 +26,8 @@ if [ -z "$(git config --get user.signingkey)" ]; then
     echo "   keysize = 4096"
     echo "   how long the key should be valid = <as you want e.g. 1y>"
     echo "   Real name = Your full name"
-    echo "   Email address = <github_username>\@users.noreply.github.com"
-    echo "   Comment = <as you want e.g. username\@hotname>
+    echo "   Email address = <github_username>@users.noreply.github.com"
+    echo "   Comment = <as you want e.g. username@hotname>
     echo ""
     echo "Please [Enter] key to continue..." && read -p "$*"
 
