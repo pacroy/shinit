@@ -23,7 +23,7 @@ fi
 if [ -z "$(git config --get user.signingkey)" ]; then
     read -rp "GPG key is not configured. Generate and configure a new one? (yes to proceed): " is_generate_pgp </dev/tty
     if [ "${is_generate_pgp}" = "yes" ]; then
-        echo "A new GPG will be generate to sign your git commits. Please choose the following options when asked:"
+        echo "A new GPG will be generated to sign your git commits. Please choose the following options when asked:"
         echo "   kind of key = RSA and RSA"
         echo "   keysize = 4096"
         echo "   how long the key should be valid = <as you want e.g. 1y>"
