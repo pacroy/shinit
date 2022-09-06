@@ -9,7 +9,7 @@ Linux Shell Initialization Scripts
 Usual installation
 
 ```bash
-curl -fsSL https://pacroy.com/sh-init | bash && source $HOME/.init/init.sh
+curl -fsSL https://pacroy.link/sh-init | bash && source $HOME/.init/init.sh
 ```
 
 Installation behind proxy
