@@ -31,7 +31,7 @@ if [ -z "$(git config --get user.signingkey)" ]; then
         echo "   Email address = <github_username>@users.noreply.github.com"
         echo "   Comment = <as you want e.g. username@hotname>"
         echo ""
-        printf "Please [Enter] key to continue..." && read -r
+        printf "Please [Enter] key to continue..." && read -r </dev/tty
 
         gpg --full-generate-key
         gpg --list-secret-keys --keyid-format=long
