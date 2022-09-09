@@ -16,7 +16,7 @@ if [ -d "${INITDIR}" ]; then
         git submodule update
     )
 else
-    git clone --quiet --depth 1 https://github.com/pacroy/sh-init.git "${INITDIR}"
+    git clone --quiet --depth 1 https://github.com/pacroy/shinit.git "${INITDIR}"
     {
         cd "${INITDIR}"
         git submodule init
