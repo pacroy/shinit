@@ -28,9 +28,15 @@ curl -fsSL https://raw.githubusercontent.com/pacroy/shinit/main/install.sh -x "$
 ### .zshrc
 
 ```bash
+ZSH_THEME="af-magic"
+
+DISABLE_MAGIC_FUNCTIONS=true
+
 plugins=(
     git
     zsh-syntax-highlighting
     zsh-autosuggestions
 )
+
+DEFAULT_USER="yourusername"
 ```
