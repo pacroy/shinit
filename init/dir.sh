@@ -11,7 +11,7 @@ if [ ! -d ~/bin ]; then
     mkdir -p ~/bin;
 fi 
 
-if [ -n "$WSLENV" ]; then
+if [ -n "$WSLENV" ] && [ "$WSLENV" != "WT_SESSION::WT_PROFILE_ID" ]; then
     username=$(whoami)
     if [ ! -e ~/"${username}" ]; then
         echo "Creating symbolic link ~/${username} ..."

@@ -1,6 +1,7 @@
-name: Check Markdown links
+name: Check Markdown Links
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -8,12 +9,6 @@ on:
 
 jobs:
   markdown-link-check:
-    name: Check Markdown links
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: gaurav-nelson/github-action-markdown-link-check@v1
-      with:
-        use-quiet-mode: 'yes'
-        use-verbose-mode: 'yes'
-        config-file: '.github/mdlink/mlc_config.json'
+    name: Check Markdown Links
+    uses: pacroy/gh-common-workflows/.github/workflows/wf_mdlink.yml@v1
+    secrets: inherit
