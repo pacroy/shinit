@@ -2,7 +2,7 @@
 set -o errexit
 set -o pipefail
 
-if [ ! -d ~/.ssh ] || ! ls ~/.ssh/id* &>/dev/null; then
+if ( [ ! -d ~/.ssh ] || ! ls ~/.ssh/id* &>/dev/null ) && [ -z "${SHINIT_SKIP_SSH}" ]; then
     read -rp "SSH key is not found. Generate and configure a new one? (yes to proceed): " is_generate_ssh </dev/tty
     if [ "${is_generate_ssh}" = "yes" ]; then
         echo "Generate a new SSH keypair..."

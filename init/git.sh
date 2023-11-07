@@ -20,7 +20,7 @@ if [ -z "$(git config --get init.defaultBranch)" ]; then
     git config --global init.defaultBranch main
 fi
 
-if [ -z "$(git config --get user.signingkey)" ]; then
+if [ -z "$(git config --get user.signingkey)" ] && [ -z "${SHINIT_SKIP_GPG}" ]; then
     read -rp "GPG key is not configured. Generate and configure a new one? (yes to proceed): " is_generate_pgp </dev/tty
     if [ "${is_generate_pgp}" = "yes" ]; then
         echo "A new GPG will be generated to sign your git commits. Please choose the following options when asked:"
