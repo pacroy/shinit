@@ -2,7 +2,8 @@
 set -o errexit
 set -o pipefail
 
-INITDIR="$HOME/.init"
+DEFAULT_INITDIR="$HOME/.init"
+export INITDIR="${INITDIR:-$DEFAULT_INITDIR}"
 
 if [ -d "${INITDIR}" ]; then
     (   
