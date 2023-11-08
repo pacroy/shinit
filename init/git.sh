@@ -20,9 +20,9 @@ if [ -z "$(git config --get init.defaultBranch)" ]; then
     git config --global init.defaultBranch main
 fi
 
-if [ -z "$(git config --get user.signingkey)" ]; then
-    read -rp "GPG key is not configured. Generate and configure a new one? (yes to proceed): " is_generate_pgp </dev/tty
-    if [ "${is_generate_pgp}" = "yes" ]; then
+if [ -z "$(git config --get user.signingkey)" ] && [ -z "${SHINIT_SKIP_GPG}" ]; then
+    read -rp "GPG key is not configured. Generate and configure a new one? (yes to proceed): " is_generate_gpg </dev/tty
+    if [ "${is_generate_gpg}" = "yes" ]; then
         echo "A new GPG will be generated to sign your git commits. Please choose the following options when asked:"
         echo "   kind of key = RSA and RSA"
         echo "   keysize = 4096"
@@ -38,15 +38,15 @@ if [ -z "$(git config --get user.signingkey)" ]; then
 
         echo ""
         echo "Input GPG key id from above. The key id is an ASCII text after 'sec  rsa4096/'."
-        read -rp "GPG key ID : " pgp_key_id </dev/tty
-        echo "Configuring git user.signingkey=${pgp_key_id} ..."
-        git config --global user.signingkey "${pgp_key_id}"
+        read -rp "GPG key ID : " gpg_key_id </dev/tty
+        echo "Configuring git user.signingkey=${gpg_key_id} ..."
+        git config --global user.signingkey "${gpg_key_id}"
         echo "Configuring git commit.gpgsign=true ..."
         git config --global commit.gpgsign true
         echo "Configuring git tag.gpgSign=true ..."
         git config --global tag.gpgSign true
 
         echo "Please add the following GPG public key in your GitHub settings:"
-        gpg --armor --export "${pgp_key_id}"
+        gpg --armor --export "${gpg_key_id}"
     fi
 fi
