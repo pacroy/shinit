@@ -20,7 +20,11 @@ curl -fsSL https://raw.githubusercontent.com/pacroy/shinit/main/install.sh -x "$
 
 ## Addons
 
-### zsh
+### Oh My Zsh
+
+[Install Oh My Zsh](https://ohmyz.sh/#install)
+
+### Oh My Zsh Plugins
 
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
