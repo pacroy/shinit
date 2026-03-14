@@ -122,7 +122,7 @@ moshorssh() {
         client_pid=$(tmux display-message -p '#{client_pid}' 2>/dev/null)
         [ -n "$client_pid" ] && check_pid=$client_pid
       fi
-      if pstree -ps $check_pid | grep -q mosh-server; then
+      if pstree -ps "$check_pid" | grep -q mosh-server; then
         echo "Connected via mosh"
       else
         echo "Connected via ssh"
