@@ -116,7 +116,7 @@ alias switch='sudo update-alternatives --config'
 # mosh
 moshorssh() { 
     if env | grep -q '^SSH_CONNECTION='; then
-      if pstree -ps $$ | grep -q mosh-server; then
+      if ps -u "$USER" --forest | grep mosh-server; then
         echo "Connected via mosh"
       else
         echo "Connected via ssh"
