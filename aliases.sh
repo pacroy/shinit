@@ -114,9 +114,15 @@ alias ll='ls -AlFh'
 alias switch='sudo update-alternatives --config'
 
 # mosh
-moshorssh() { 
+moshorssh() {
     if env | grep -q '^SSH_CONNECTION='; then
-      if pstree -ps $$ | grep -q mosh-server; then
+      local check_pid=$$
+      if [ -n "$TMUX" ]; then
+        local client_pid
+        client_pid=$(tmux display-message -p '#{client_pid}' 2>/dev/null)
+        [ -n "$client_pid" ] && check_pid=$client_pid
+      fi
+      if pstree -ps $check_pid | grep -q mosh-server; then
         echo "Connected via mosh"
       else
         echo "Connected via ssh"
