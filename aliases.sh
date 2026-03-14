@@ -112,3 +112,16 @@ shversion() {
 # Standard
 alias ll='ls -AlFh'
 alias switch='sudo update-alternatives --config'
+
+# mosh
+moshorssh() { 
+    if env | grep -q '^SSH_CONNECTION='; then
+      if pstree -ps $$ | grep -q mosh-server; then
+        echo "Connected via mosh"
+      else
+        echo "Connected via ssh"
+      fi
+    else
+      echo "Local console (no ssh/mosh)"
+    fi
+}
